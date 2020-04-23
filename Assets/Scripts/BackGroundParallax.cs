@@ -23,7 +23,6 @@ public class BackGroundParallax : MonoBehaviour
     void Start()
     {
         previousCamPos = CamTransfrom.position;
-        Debug.Log("AAAAAAAAAAAAAAAAAAAA");
     }
 
     // Update is called once per frame
@@ -34,7 +33,6 @@ public class BackGroundParallax : MonoBehaviour
         {
             float targetX = backgrounds[i].position.x + parallax * (1 + i * layerScale);
             Vector3 targetPos = new Vector3(targetX, backgrounds[i].position.y, backgrounds[i].position.z);
-            Debug.Log("BBBBBBBBBBBBBBBBBBB");
             backgrounds[i].position = Vector3.Lerp(backgrounds[i].position, targetPos, smooth * Time.deltaTime);
         }
         previousCamPos = CamTransfrom.position;
