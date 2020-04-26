@@ -6,20 +6,19 @@ public class Gun : MonoBehaviour
 {
     public Rigidbody2D rocket;
     public float speed = 20f;
-
     private PlayerControl playerCtrl;
-    // Start is called before the first frame update
+    private AudioSource audio;
     void Start()
     {
         //playerCtrl = GameObject.Find("Hero").transform.GetComponent<PlayerControl>();
         playerCtrl = transform.parent.GetComponent<PlayerControl>();
+        audio = GetComponent<AudioSource>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            audio.Play();
             if (playerCtrl.faceRight)
             {
                 Rigidbody2D bullet = Instantiate(rocket, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));

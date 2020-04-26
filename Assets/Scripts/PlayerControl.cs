@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
     public float moveForce = 400f;
     public float maxSpeed = 5f;
     public float jumpForce = 100f;
+    private Animator anim;
     [HideInInspector]
     public bool jump = false;
 
@@ -23,6 +24,8 @@ public class PlayerControl : MonoBehaviour
         heroBody = GetComponent<Rigidbody2D>();
         groundCheck = transform.Find("GroundCheck");
         //BoxCollider2D bc2d = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
+        
     }
 
     private void FixedUpdate()
@@ -36,6 +39,8 @@ public class PlayerControl : MonoBehaviour
         if (Mathf.Abs(heroBody.velocity.x) > maxSpeed)
             //heroBody.velocity = new Vector2(Mathf.Sign(heroBody.velocity.x) * h * maxSpeed, heroBody.velocity.y);
             heroBody.velocity = new Vector2(Mathf.Sign(heroBody.velocity.x) * maxSpeed, heroBody.velocity.y);
+        // anim.SetFloat("speed", Mathf.Abs(h));
+        anim.SetFloat("speed", Mathf.Abs(heroBody.velocity.x));
         if (h > 0 && !faceRight)
         {
             flip();
@@ -46,6 +51,7 @@ public class PlayerControl : MonoBehaviour
         }
         if (jump)
         {
+            anim.SetTrigger("jump");
             heroBody.AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }

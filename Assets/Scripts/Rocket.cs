@@ -5,14 +5,16 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     public GameObject explosion;
-    // Start is called before the first frame update
+    private AudioSource audio;
     void Start()
     {
         Destroy(gameObject, 2);
+        audio = GetComponent<AudioSource>();
     }
 
     void OnExplode()
     {
+        audio.Play();
         Quaternion randRotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
         Instantiate(explosion, transform.position, randRotation);
     }
