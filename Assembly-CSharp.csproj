@@ -67,7 +67,9 @@
     <Compile Include="Assets\Scripts\CamerFollow.cs" />
     <Compile Include="Assets\Scripts\Destroyer.cs" />
     <Compile Include="Assets\Scripts\Gun.cs" />
+    <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Rocket.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/GitHub/Unity练习/Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
