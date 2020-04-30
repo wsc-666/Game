@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public float hurtForce = 100f;
     public float damageAmount;
 
+    private Animator anim;
     private SpriteRenderer healthBar;
     private float lastHurtTime;
     private Vector3 healthScale;
@@ -21,12 +22,13 @@ public class PlayerHealth : MonoBehaviour
         heroBody = GetComponent<Rigidbody2D>();
         playerControl = GetComponent<PlayerControl>();
         healthScale = healthBar.transform.localScale;
+        anim = GetComponent<Animator>();
     }
 
     void UpDateHealthBar()
     {
         healthBar.material.color = Color.Lerp(Color.green, Color.red, 1 - health * 0.01f);
-        healthBar.transform.localScale = new Vector3(healthScale.x * health * 0.01f,1,1);
+        healthBar.transform.localScale = new Vector3(healthScale.x * health * 0.01f,healthScale.y,healthScale.z);
     }
 
     void TakeDamage(Transform enemyTran)
@@ -35,8 +37,29 @@ public class PlayerHealth : MonoBehaviour
         Vector3 hurtVector3 = transform.position - enemyTran.position + Vector3.up * 5f;
         heroBody.AddForce(hurtForce * hurtVector3);
         health -= damageAmount;
+        if (health < 0) health = 0;
 
         UpDateHealthBar();
+    }
+
+    void Death()
+    {
+        Collider2D[] colliers = GetComponents<Collider2D>();
+
+        foreach (Collider2D c in colliers)
+        {
+            c.isTrigger = true;
+        }
+
+        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            sprites[i].sortingLayerName = "UI";
+        }
+
+        playerControl.enabled = false;
+        GetComponentInChildren<Gun>().enabled = false;
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -49,29 +72,16 @@ public class PlayerHealth : MonoBehaviour
                 {
                     TakeDamage(collision.gameObject.transform);
                     lastHurtTime = Time.time;
+                    if (health <= 0)
+                    {
+                        Death();
+                        anim.SetTrigger("die");
+                    }
                 }
                 else
                 {
-                    Collider2D[] colliers = GetComponents<Collider2D>();
-
-                    foreach(Collider2D c in colliers)
-                    {
-                        c.isTrigger = true;
-                    }
-
-                    //for(int i = 0; i < colliers.Length; i++)
-                    //{
-                    //    colliers[i].isTrigger = true;
-                    //}
-                    SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
-                    for(int i = 0; i < sprites.Length; i++)
-                    {
-                        sprites[i].sortingLayerName = "UI";
-                    }
-
-                    playerControl.enabled = false;
-                    GetComponentInChildren<Gun>().enabled = false;
-                    
+                    Death();
+                    anim.SetTrigger("die");
                 }
             }
         }
