@@ -5,10 +5,12 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     public GameObject explosion;
+    private Enemy enemys;
     //private AudioSource audio;
     void Start()
     {
         Destroy(gameObject, 2);
+        //enemys = GameObject.Find("Enemy1").GetComponent<Enemy>();
         //audio = GetComponent<AudioSource>();
     }
 
@@ -25,7 +27,21 @@ public class Rocket : MonoBehaviour
             OnExplode();                //实例化爆炸效果
             Destroy(gameObject);        //销毁炮弹
         }
+
+        if (collision.tag == "Enemy")
+        {
+            enemys = collision.GetComponent<Enemy>();
+            if (enemys != null)
+            {
+                enemys.Hurt();
+            }
+        }
+
+        
     }
+
+
+
     // Update is called once per frame
     void Update()
     {
