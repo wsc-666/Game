@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8285544573588040780}
   m_Layer: 8
   m_Name: env_PlatformBridge
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 8285544573745910522}
   m_Layer: 8
   m_Name: env_PlatformTop
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 8285544573901160149}
   m_Layer: 8
   m_Name: env_PlatformUfo
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1209,7 +1209,7 @@ GameObject:
   - component: {fileID: 8285544574835274771}
   m_Layer: 8
   m_Name: env_PlatformTop
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1376,7 +1376,7 @@ GameObject:
   - component: {fileID: 8285544574989926908}
   m_Layer: 8
   m_Name: env_PlatformBridge
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
