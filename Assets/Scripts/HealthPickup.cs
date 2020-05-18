@@ -7,14 +7,13 @@ public class HealthPickup : MonoBehaviour
 	public float healthBonus;               // How much health the crate gives the player.
 	private PickupSpawner pickupSpawner;    // Reference to the pickup spawner.
 	private Animator anim;                  // Reference to the animator component.
-	private bool landed = false;                    // Whether or not the crate has landed.
+	private bool landed = false;            // Whether or not the crate has landed.
 
 
 	void Awake()
 	{
 		anim = transform.root.GetComponent<Animator>();
 		pickupSpawner = GameObject.Find("pickupManager").GetComponent<PickupSpawner>();
-		Debug.Log(GameObject.Find("pickupManager"));
 	}
 
 

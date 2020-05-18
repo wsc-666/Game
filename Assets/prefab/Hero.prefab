@@ -481,8 +481,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombLaid: 0
-  bomb: {fileID: 0}
-  bombCount: 0
+  bomb: {fileID: 4735049753287383395, guid: 28e67a8dc1ba2e5438100d2fc78556f1, type: 3}
+  bombCount: 10
 --- !u!1 &5559105046482081785
 GameObject:
   m_ObjectHideFlags: 0

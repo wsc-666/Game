@@ -137,7 +137,7 @@ MonoBehaviour:
   bombRadius: 10
   bombForce: 100
   fuseTime: 1.5
-  explosion: {fileID: 0}
+  explosion: {fileID: 100000, guid: 3b4ec306617b350448b3ec958a9250be, type: 3}
 --- !u!1 &4735049754010914570
 GameObject:
   m_ObjectHideFlags: 0

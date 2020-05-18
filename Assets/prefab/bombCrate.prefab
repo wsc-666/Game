@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6129054246072167122}
   - component: {fileID: 6129054246072167133}
   - component: {fileID: 6129054246072167120}
+  - component: {fileID: 6886411702616407355}
   m_Layer: 0
   m_Name: crate
   m_TagString: Untagged
@@ -138,6 +139,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb89c9eeaaa06a429001dfcbbd29ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6886411702616407355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6129054246072167135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad2902a2ee983146b7249835dddb7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombRadius: 10
+  bombForce: 100
+  fuseTime: 1.5
+  explosion: {fileID: 0}
 --- !u!1 &6129054246344134698
 GameObject:
   m_ObjectHideFlags: 0
