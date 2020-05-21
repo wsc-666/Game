@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class PlayerHealth : MonoBehaviour
     public float damgeInterval = 0.35f;
     public float hurtForce = 100f;
     public float damageAmount;
+    public AudioClip[] ouchClips;
+    public AudioMixer mixer;
 
+    private AudioSource audio;
     private Animator anim;
     private SpriteRenderer healthBar;
     private float lastHurtTime;
@@ -23,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
         playerControl = GetComponent<PlayerControl>();
         healthScale = healthBar.transform.localScale;
         anim = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     public void UpDateHealthBar()
@@ -66,6 +71,18 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            if (audio != null)
+            {
+                if (!audio.isPlaying)
+                {
+                    int i = Random.RandomRange(0, ouchClips.Length);
+                    audio.clip = ouchClips[i];
+                    audio.Play();
+                    mixer.SetFloat("hero", 0);
+
+                }
+            }
+
             if (Time.time > lastHurtTime + damgeInterval)
             {
                 if (health > 0)

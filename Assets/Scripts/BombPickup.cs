@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class BombPickup : MonoBehaviour
 {
+	public AudioClip pickupClip;
+
 	private Animator anim;              // Reference to the animator component.
 	private bool landed = false;        // Whether or not the crate has landed yet.
 
 	void Awake()
 	{
 		anim = transform.root.GetComponent<Animator>();
+		//audio = GetComponent<AudioSource>();
 	}
 
 
@@ -18,6 +21,7 @@ public class BombPickup : MonoBehaviour
 		// 炸弹还在半空被接住
 		if (other.tag == "Player")
 		{
+			AudioSource.PlayClipAtPoint(pickupClip, GameObject.Find("Main Camera").transform.position);
 			// 销毁炮弹
 			Destroy(transform.root.gameObject);
 		}

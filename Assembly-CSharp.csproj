@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AdjustVolume.cs" />
     <Compile Include="Assets\Scripts\BackGroundParallax.cs" />
     <Compile Include="Assets\Scripts\Bomb.cs" />
     <Compile Include="Assets\Scripts\BombPickup.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Scripts\PickupSpawner.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\Remover.cs" />
     <Compile Include="Assets\Scripts\Rocket.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Reference Include="Unity.Timeline.Editor">

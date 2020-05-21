@@ -9,7 +9,7 @@ public class HealthPickup : MonoBehaviour
 	private Animator anim;                  // Reference to the animator component.
 	private bool landed = false;            // Whether or not the crate has landed.
 
-
+	public AudioClip pickupClip;
 	void Awake()
 	{
 		anim = transform.root.GetComponent<Animator>();
@@ -22,6 +22,8 @@ public class HealthPickup : MonoBehaviour
 		// 半空中被接着
 		if (other.tag == "Player")
 		{
+
+			AudioSource.PlayClipAtPoint(pickupClip, GameObject.Find("Main Camera").transform.position);
 			PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
 
 			// 加血

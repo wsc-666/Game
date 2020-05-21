@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Enemy : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class Enemy : MonoBehaviour
     public GameObject UI_100Points;//死后得分
     public float deathSpinMin = -100f;//怪物死后旋转量
     public float deathSpinMax = 100f;
+    public AudioClip[] tauntsClips;
+    public AudioMixer mixer;
 
+    private AudioSource audio;
     private Transform frontCheck;
     private SpriteRenderer ren;//负责更换对应图片的
     private Rigidbody2D enemyBody;//敌人的2D刚体
@@ -24,6 +28,7 @@ public class Enemy : MonoBehaviour
         frontCheck = transform.Find("frontCheck");
         ren = transform.Find("alienShip").GetComponent<SpriteRenderer>();
         enemyBody = GetComponent<Rigidbody2D>();
+        audio = GetComponent<AudioSource>();
     }
     void flip()
     {
@@ -59,12 +64,25 @@ public class Enemy : MonoBehaviour
 
         if(HP==0 && !bDeadth)
         {
+            if (audio != null)
+            {
+                if (!audio.isPlaying)
+                {
+                    int i = UnityEngine.Random.RandomRange(0, tauntsClips.Length);
+                    audio.clip = tauntsClips[i];
+                    audio.Play();
+
+                    mixer.SetFloat("HeroVolume", 0);
+
+                }
+            }
             Death();
         }
     }
 
     void Death()
     {
+        
         bDeadth = true;
         SpriteRenderer[] renders = GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer s in renders)

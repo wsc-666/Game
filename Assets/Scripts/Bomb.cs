@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Bomb : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Bomb : MonoBehaviour
     public float fuseTime = 1.5f;   // 引线时间
     public GameObject explosion;    // 爆炸背景圆
 
+    public AudioClip boom;                  // Audioclip of explosion.
+    public AudioClip fuse;
+    public AudioMixer mixer;
     private LayBombs layBombs;              // Hero脚本
     private PickupSpawner pickupSpawner;    // 道具生成脚本，启动新协程用
     private ParticleSystem explosionFX;     // 爆炸粒子效果
@@ -18,19 +22,22 @@ public class Bomb : MonoBehaviour
         explosionFX = GameObject.FindGameObjectWithTag("ExplosionFX").GetComponent<ParticleSystem>();
         pickupSpawner = GameObject.Find("pickupManager").GetComponent<PickupSpawner>();
         layBombs = GameObject.FindGameObjectWithTag("Player").GetComponent<LayBombs>();
+        //audio = GetComponents<AudioSource>();
     }
 
     void Start()
     {
         if (transform.root == transform)
             StartCoroutine(BombDetonation());
+       //mixer.SetFloat("ProbsVolume", 20);
     }
 
     IEnumerator BombDetonation()
     {
+        AudioSource.PlayClipAtPoint(fuse, GameObject.Find("Main Camera").transform.position);
         // 等待两秒，用于播放引信燃烧效果
         yield return new WaitForSeconds(fuseTime);
-
+        
         Explode();
     }
 
@@ -66,6 +73,7 @@ public class Bomb : MonoBehaviour
         // 实列化爆炸背景圆
         Instantiate(explosion, transform.position, Quaternion.identity);
 
+        AudioSource.PlayClipAtPoint(boom, GameObject.Find("Main Camera").transform.position);
         // 销毁Bomb
         Destroy(gameObject);
     }

@@ -1,31 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerControl : MonoBehaviour
 {
     public float moveForce = 400f;
     public float maxSpeed = 5f;
     public float jumpForce = 100f;
-    private Animator anim;
-    [HideInInspector]
-    public bool jump = false;
-
-    private bool grounded = false;
-    private Transform groundCheck;
-
-    private Rigidbody2D heroBody;
     [HideInInspector]
     public bool faceRight = true;
+    [HideInInspector]
+    public bool jump = false;
+    public AudioClip[] jumpClips;
+    public AudioMixer mixer;
 
-    // Start is called before the first frame update
+    private AudioSource audio;
+    private Animator anim;
+    private bool grounded = false;
+    private Transform groundCheck;
+    private Rigidbody2D heroBody;
+    
+
     void Start()
     {
         heroBody = GetComponent<Rigidbody2D>();
         groundCheck = transform.Find("GroundCheck");
         //BoxCollider2D bc2d = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
-        
+        audio = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -54,6 +57,19 @@ public class PlayerControl : MonoBehaviour
             anim.SetTrigger("jump");
             heroBody.AddForce(new Vector2(0f, jumpForce));
             jump = false;
+
+            if (audio != null)
+            {
+                if (!audio.isPlaying)
+                {
+                    int i = Random.RandomRange(0, jumpClips.Length);
+                    audio.clip = jumpClips[i];
+                    audio.Play();
+                
+                    mixer.SetFloat("HeroVolume", 0);
+
+                }
+            }
         }
     }
     // Update is called once per frame

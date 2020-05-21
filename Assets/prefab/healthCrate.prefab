@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBonus: 10
+  pickupClip: {fileID: 8300000, guid: fdcf63a3454d74ea5bdd46db131f3078, type: 3}
 --- !u!1 &4720481826853570908
 GameObject:
   m_ObjectHideFlags: 0
