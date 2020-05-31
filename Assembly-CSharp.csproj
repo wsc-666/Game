@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Remover.cs" />
     <Compile Include="Assets\Scripts\Rocket.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
+    <Compile Include="Assets\Scripts\UI.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/GitHub/Unity练习/Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
