@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 8610510877825320821}
   - component: {fileID: 669878161}
   - component: {fileID: 7806704752979953178}
+  - component: {fileID: 1491657879537955030}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -138,15 +139,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3297536352078202153}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.79, y: 1.02, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.11720205, w: 0.9931081}
+  m_LocalPosition: {x: -5.8157754, y: 0.8615973, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 3297536351874881949}
   - {fileID: 8673064106093339272}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -13.461}
 --- !u!61 &3471130707982153566
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -317,3 +318,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1491657879537955030
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3297536352078202153}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45981b3576bc8d74dbede73379f77be7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
